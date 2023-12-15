@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/user.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/lock.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/mail.css' rel='stylesheet'>
+    <style>
+        :root{
+            --pixels: 400px
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url("background.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .container {
+            backdrop-filter: blur(15px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: auto;
+            width: var(--pixels);
+            height: auto;
+            border-style: solid;
+            border-radius: calc(0.05 * var(--pixels));
+        }
+
+        .selector {
+            display: flex;
+            margin-inline: auto;
+            width: calc(0.75 * var(--pixels));
+            height:  calc(0.125* var(--pixels));
+            background-color: rgba(255, 255, 255, 0);
+            border-radius:  calc(0.0375 * var(--pixels));
+            margin-top:  calc(0.1* var(--pixels));
+            margin-bottom:  calc(0.1 * var(--pixels));
+            border-style: solid;
+
+        }
+
+        .selector>li {
+            display: flex;
+            list-style: none;
+            background-color: rgba(0, 0, 0, 0);
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            border-radius:  calc( 0.0375* var(--pixels));
+        }
+
+        .selector>li>a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+        }
+
+        .signup {
+            background-color: rgb(238, 255, 0,0.3);
+        }
+
+        .box {
+            width:  calc(0.75* var(--pixels));
+            margin-bottom: 40px;
+            border-radius: 15px;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height:  calc( 0.1 * var(--pixels));
+            margin-bottom:  calc(0.05 * var(--pixels));
+        }
+
+        .item>input {
+            background-color: rgba(240, 248, 255, 0);
+            width: 90%;
+            height: 100%;
+            border: none;
+            outline: none;
+            border-width: 0px;
+            border-bottom:  calc( 0.005* var(--pixels));
+            border-style: solid;
+            font-size: larger;
+        }
+        .item>input::placeholder{
+            color: black;
+            
+        }
+        .gg-user {
+            margin-right:  calc(0.0375 * var(--pixels));
+        }
+
+        .gg-mail {
+            margin-right:  calc(0.0375  * var(--pixels));
+        }
+
+        .gg-lock {
+            margin-right:  calc(0.0375 * var(--pixels));
+        }
+
+        .getstarted {
+            border: none;
+            background-color: rgba(238, 255, 0, 0.3);
+            border-radius:  calc(0.025 * var(--pixels));
+            font-weight: bolder;
+            font-size: large;
+            border-style: solid
+        }
+
+        #login-form {
+            display: none;
+        }
+
+        .welcome {
+            border: none;
+            background-color: rgb(238, 255, 0,0.3);
+            border-radius:  calc(0.025 * var(--pixels));
+            font-weight: bolder;
+            font-size: large;
+            border-style: solid
+        }
+
+        .password {
+            margin-bottom:  calc(0.125 * var(--pixels));
+        }
+        @media (max-width:500px) {
+            :root{
+            --pixels: 280px
+        }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="selector">
+        <li class="signup" style="background-color: rgb(238, 255, 0,0.3);"><a href="#signup">SIGNUP</a></li>
+        <li class="login"><a href="#login">LOGIN</a></li>
+    </div>
+    <div class="box">
+        <form action="/" id="signup-form">
+            <div class="fname item"><i class="gg-user"></i><input type="text" placeholder="Firstname*"></div>
+            <div class="lname item"><i class="gg-user"></i><input type="text" placeholder="Lastname*"></div>
+            <div class="Email item"><i class="gg-mail"></i><input type="text" placeholder="Email*"></div>
+            <div class="password item"><i class="gg-lock"></i><input type="text" placeholder="Password*"></div>
+            <button class="getstarted item">GET STARTED</button>
+        </form>
+        <form action="" id="login-form">
+            <div class="Username item"><i class="gg-user"></i><input type="text" placeholder="Username*"></div>
+            <div class="password item"><i class="gg-lock"></i><input type="text" placeholder="Password*"></div>
+            <button class="welcome item">WELCOME BACK</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var signupTab = document.querySelector('.signup');
+        var loginTab = document.querySelector('.login');
+        var signupForm = document.getElementById('signup-form');
+        var loginForm = document.getElementById('login-form');
+
+        signupTab.addEventListener('click', function() {
+            signupForm.style.display = 'block';
+            loginForm.style.display = 'none';
+            signupTab.style.backgroundColor = "rgb(238, 255, 0,0.3)";
+            loginTab.style.backgroundColor = "rgb(238, 255, 0, 0)";
+
+        });
+
+        loginTab.addEventListener('click', function() {
+            signupForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            loginTab.style.backgroundColor = "rgb(238, 255, 0,0.3)";
+            signupTab.style.backgroundColor = "rgb(238, 255, 0, 0)";
+        });
+    });
+</script>
+</body>
+</html>
