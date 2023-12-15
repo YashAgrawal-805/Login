@@ -98,7 +98,6 @@
             border-bottom:  calc( 0.005* var(--pixels));
             border-style: solid;
             font-size: larger;
-            color: black;
         }
         .item>input::placeholder{
             color: black;
@@ -145,6 +144,13 @@
             :root{
             --pixels: 280px
         }
+        }
+        @media (max-height:375px) {
+            body {
+            background-image: url("background.jpg");
+            background-size: auto,375px;
+            background-position: center;
+            }
         }
     </style>
 </head>
